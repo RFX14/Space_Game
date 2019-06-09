@@ -1,3 +1,5 @@
+import javax.swing.JPanel;
+
 /**
  * Space_Game
  * Created: Jun 7, 2019
@@ -8,6 +10,12 @@
  * @author coffeemate
  *
  */
-public class Game {
-    
+public class Game extends JPanel implements Runnable{
+    public Game() {
+
+    }
+
+    public void run() {
+
+    }
 }

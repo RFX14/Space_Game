@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 /**
  * Space_Game
  * Created: Jun 8, 2019
- * TODO: Get printText() working properly
+ * TODO: Implement scaling later
  */
 
 /**
