@@ -11,14 +11,16 @@ import javax.swing.JPanel;
 /**
  * Space_Game
  * Created: Jun 7, 2019
- * TODO: Get button to change scene
+ * TODO: Get button to close this frame
  */
 
 /**
  * @author coffeemate
  */
-public class Menu extends JPanel implements ActionListener {
+public class Menu extends JPanel implements ActionListener, Runnable {
     int xSize, ySize;
+    static JFrame frame = new JFrame();
+    volatile static boolean close = false;
 
     public Menu() {
         setLayout(null);
@@ -44,28 +46,25 @@ public class Menu extends JPanel implements ActionListener {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     }
 
-    public static void main(String[] args) {
-        Task taskRunner = new Task();
-        taskRunner.start();
-    }
-
     public void actionPerformed(ActionEvent e) {
         String btn = e.getActionCommand();
         if(btn.equalsIgnoreCase("play!")) {
             System.out.println("hehe");
+            close = true;
         }
     }
-}
 
-class Task extends Thread {
     public void run() {
-        JFrame frame = new JFrame();
-
         frame.pack();
         frame.setResizable(false);
-        frame.setSize(640, 480);
+        frame.setSize(xSize, ySize);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.add(new Menu());
     }
+
+	public static boolean getClose() {
+		return close;
+    }
+    
 }

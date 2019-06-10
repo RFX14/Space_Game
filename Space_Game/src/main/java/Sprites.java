@@ -49,7 +49,8 @@ public class Sprites {
 
     /**
      * I recommend you only type things that are at max 9chars b/c then your text is off screen  
-     * Optimatlly things should be ~5chars 
+     * Optimatlly things should be ~5chars.
+     * Additionally if an unknown char is used then it will default to printing out to 'z'
      * 
      * @param str the string to be printed out
      * @param x the x-coord of text based off of left corner
@@ -140,6 +141,8 @@ public class Sprites {
                 case 'z': 
                     finalStr[i] = alphaList[25];
                     break;
+                default:
+                    finalStr[i] = alphaList[25];
             }
         }
 
