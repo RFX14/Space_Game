@@ -31,4 +31,8 @@ public class ShootingMech {
     public static void removeAmmo(Bullet bullet) {
         ammo.remove(bullet);
     }
+
+    public static LinkedList getBullet() {
+        return ammo;
+    }
 }
