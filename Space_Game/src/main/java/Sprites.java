@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  * sure if the fonts that I use will transfer to other computers...
  * 
  * UPDATE: Feeekk that took way to long to calculate the postions of the letters
- * It took so long b/c the letters aren't even (I think)
+ * It took so long b/c the letters aren't evenly sized (I think)
  * 
 */
 public class Sprites {

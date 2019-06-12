@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -7,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  * Space_Game
@@ -24,13 +23,22 @@ import javax.swing.JPanel;
  */
 public class Game extends JPanel implements Runnable, ActionListener {
     int xSize, ySize;
-    Player player = new Player();
+    Player player;
+    ShootingMech shoot;
+    Timer gamelooptimer;
     static JFrame frame = new JFrame();
 
     public Game() {
         setLayout(null);
         xSize = 640;
         ySize = 480;
+        player = new Player();
+        shoot = new ShootingMech();
+
+        setFocusable(true);
+        gamelooptimer = new Timer(5, this);
+        gamelooptimer.start();
+        addKeyListener(new KeyInput(player));
     }
 
     @Override
@@ -43,6 +51,9 @@ public class Game extends JPanel implements Runnable, ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        player.draw(g2d);
+        shoot.draw(g2d);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     }
 
@@ -57,5 +68,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         player.update();
+        shoot.update();
+        repaint();
     }
 }
