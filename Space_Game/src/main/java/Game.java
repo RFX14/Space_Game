@@ -24,8 +24,8 @@ import javax.swing.Timer;
 public class Game extends JPanel implements Runnable, ActionListener {
     int xSize, ySize;
     Player player;
-    Bunker bunker;
     ShootingMech shoot;
+    BunkerMech bunkers;
     Timer gamelooptimer;
     static JFrame frame = new JFrame();
 
@@ -35,7 +35,9 @@ public class Game extends JPanel implements Runnable, ActionListener {
         ySize = 480;
         player = new Player();
         shoot = new ShootingMech();
-        bunker = new Bunker();
+        bunkers = new BunkerMech();
+        BunkerMech.addBunker(100, 100);
+        BunkerMech.addBunker(500, 100);
 
         setFocusable(true);
         gamelooptimer = new Timer(5, this);
@@ -54,7 +56,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
             e.printStackTrace();
         }
         
-        bunker.draw(g2d);
+        bunkers.draw(g2d);
         player.draw(g2d);
         shoot.draw(g2d);
         
@@ -71,6 +73,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        bunkers.update();
         player.update();
         shoot.update();
         repaint();

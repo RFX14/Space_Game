@@ -17,7 +17,7 @@ public class Bullet {
 
     public void update() {
         yPos -= 2;
-        if(Physics.Collision(this, new Bunker())) {
+        if(Physics.Collision(this, new Bunker(100, 100))) {
             hit = true;
             //System.out.println("I'm deaaad!!");
         } else {

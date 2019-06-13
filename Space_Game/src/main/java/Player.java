@@ -13,6 +13,12 @@ public class Player {
     }
 
     public void update() {
+        //Player bounds
+        if(xPos < 0) {
+            xPos += Math.abs(xPos);
+        } else if(xPos > 620) {
+            xPos -= (xPos - 620);
+        }
         xPos += xVel;
     }
 
