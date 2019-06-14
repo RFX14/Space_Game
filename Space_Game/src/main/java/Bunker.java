@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 public class Bunker {
     int x, y;
+    int width, height;
     //Triangles
     int xPoints[];
     int yPoints[];
@@ -21,6 +22,8 @@ public class Bunker {
     public Bunker(int x, int y) {
         //Keeps track of the subpieces life remaining from hits
         //Pieces start left to right starting from the top left
+        width = 30;
+        height = 30;
         this.x = x;
         this.y = y;
         LinkedList<Integer> bunkerSubset = new LinkedList<Integer>(Arrays.asList(4, 4, 4, 4, 
@@ -47,16 +50,16 @@ public class Bunker {
         g2d.fillPolygon(xPoints, yPoints, 3);
 
         //1
-        g2d.fillRect(x + 30, y, 30, 30);
+        g2d.fillRect(x + 30, y, width, height);
 
         //2
-        g2d.fillRect(x + 60, y, 30, 30);
+        g2d.fillRect(x + 60, y, width, height);
 
         //3
         g2d.fillPolygon(xPoints2, yPoints2, 3);
 
         //4
-        g2d.fillRect(x, y + 30, 30, 30);
+        g2d.fillRect(x, y + 30, width, height);
 
         //5
         g2d.fillPolygon(xPoints3, yPoints3, 3);
@@ -65,31 +68,13 @@ public class Bunker {
         g2d.fillPolygon(xPoints4, yPoints4, 3);
 
         //7
-        g2d.fillRect(x + 90, y + 30, 30, 30);
+        g2d.fillRect(x + 90, y + 30, width, height);
 
         //8
-        g2d.fillRect(x, y + 60, 30, 30);
+        g2d.fillRect(x, y + 60, width, height);
 
         //9
-        g2d.fillRect(x + 90, y + 60, 30, 30);
-
-
-        /**
-         * Removing the hit detection portion for now because I'm trying to 
-         * generalize the drawing of the bunkers and hit detection complicates 
-         * things for now
-         */
-        /*
-        for(int i = 0; i < ShootingMech.getBullet().size(); i++) {
-            if(((Bullet) ShootingMech.getBullet().get(i)).hit()) {
-                g2d.setColor(Color.BLACK);
-                g2d.fillRect(100, 100, 120, 90);
-                ShootingMech.removeAmmo((Bullet) ShootingMech.getBullet().get(i));
-            }
-        }
-        */
-        
-
+        g2d.fillRect(x + 90, y + 60, height, height);
         
     }
 
@@ -97,13 +82,25 @@ public class Bunker {
         
     }
 
-    //TODO: Figure out subpiece hit
     public Rectangle getBounds() {
         /*
-        LinkedList<Rectangle> subBounds = new LinkedList<Rectangle>();
+        LinkedList<Rectangle> subBounds = new LinkedList<Rectangle>(Arrays.asList(new Rectangle(x, y, width, height), 
+                                                                    new Rectangle(x + 30, y, width, height),
+                                                                    new Rectangle(x + 60, y, width, height),
+                                                                    new Rectangle(x + 90, y, width, height),
+                                                                    new Rectangle(x, y + 30, width, height),
+                                                                    new Rectangle(x + 30, y + 30, width, height),
+                                                                    new Rectangle(x + 60, y + 30, width, height),
+                                                                    new Rectangle(x + 90, y + 30, width, height),
+                                                                    new Rectangle(x, y + 60, width, height),
+                                                                    new Rectangle(x + 90, y + 60, width, height)));
         return subBounds;
         */
 
         return new Rectangle(x, y, 120, 90);
     }
+
+	public boolean intersects(LinkedList bounds) {
+		return false;
+	}
 }
