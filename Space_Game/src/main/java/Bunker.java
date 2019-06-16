@@ -7,6 +7,8 @@ import java.util.LinkedList;
 public class Bunker {
     int x, y;
     int width, height;
+    LinkedList subPiece;
+
     //Triangles
     int xPoints[];
     int yPoints[];
@@ -26,7 +28,8 @@ public class Bunker {
         height = 30;
         this.x = x;
         this.y = y;
-        LinkedList<Integer> bunkerSubset = new LinkedList<Integer>(Arrays.asList(4, 4, 4, 4, 
+        subPiece = new LinkedList<SubBunker>();
+        LinkedList<Integer> subHealth = new LinkedList<Integer>(Arrays.asList(4, 4, 4, 4, 
                                                                             4, 4, 4, 4, 4, 4));
         
         //Generalizes the position of the bunker
@@ -41,11 +44,23 @@ public class Bunker {
 
         xPoints4 = new int[] {x + 60, x + 90, x + 90};
         yPoints4 = new int[] {y + 30, y + 30, y + 60};
+
+        /*
+        for(int i = 0; i < 10; i++) {
+            subPiece.add(new SubBunker(i, x, y));
+        }
+        */
     }
 
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.GREEN);
+        /*
+        for(int i = 0; i < 10; i++) {
+            ((SubBunker) subPiece.get(i)).draw(g2d);
+        }
+        */
 
+        
         //0
         g2d.fillPolygon(xPoints, yPoints, 3);
 
@@ -76,6 +91,7 @@ public class Bunker {
         //9
         g2d.fillRect(x + 90, y + 60, height, height);
         
+        
     }
 
     public void update() {
@@ -99,8 +115,4 @@ public class Bunker {
 
         return new Rectangle(x, y, 120, 90);
     }
-
-	public boolean intersects(LinkedList bounds) {
-		return false;
-	}
 }

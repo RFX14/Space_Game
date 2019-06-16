@@ -1,7 +1,7 @@
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 
-public class BunkerMech {
+public class BunkerMech implements Runnable {
     static LinkedList<Bunker> bunkers = new LinkedList<Bunker>();
 
     public BunkerMech() {
@@ -20,7 +20,7 @@ public class BunkerMech {
             for(int j = 0; j < ammo.size(); j++) {
                 if(bunkers.get(i).getBounds().intersects(((Bullet) ammo.get(j)).getBounds())) {
                     bunkers.remove(i);
-                    System.out.println("*BUNKER DESTROYED*");
+                    //System.out.println("*BUNKER DESTROYED*");
                 }
             }
         }
@@ -32,5 +32,9 @@ public class BunkerMech {
 
     public static void removeBunker(int idx) {
         bunkers.remove(idx);
+    }
+
+    public void run() {
+        update();
     }
 }

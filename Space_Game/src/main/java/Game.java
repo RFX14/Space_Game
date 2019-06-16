@@ -4,7 +4,6 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -50,7 +49,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         try {
-            BufferedImage sky = ImageIO.read(new File("Night_Sky.png"));
+            BufferedImage sky = ImageIO.read(getClass().getClassLoader().getResource("Night_Sky.png"));
             g2d.drawImage(sky, null, 0, 0);
         } catch (IOException e) {
             e.printStackTrace();

@@ -27,7 +27,7 @@ public class Sprites {
 
     public Sprites() {
         try {
-            BufferedImage sheet =  ImageIO.read(new File("textSheet.png"));
+            BufferedImage sheet =  ImageIO.read(getClass().getClassLoader().getResource("textSheet.png"));
 
             //Gets first row of letters to put into array
             for(int i  = 0; i < 13; i++) {
