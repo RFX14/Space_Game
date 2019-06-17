@@ -1,7 +1,14 @@
 How to Play:
-        KNOWN ISSUES:
-                Firing too quickly will cause a crash due to an out of bounds error, I'm still trying to figure that out
 
+        Before You Play:
+                Make sure you have the JRE(Java Runtime Enviornment) or JDK(Java Development Kit) installed before hand or else you won't be able to play.
+                
+                https://www.java.com/en/download/
+        
+        KNOWN ISSUES:
+                I think the firing issue from before has sorted itself out
+                Sometime the program will drop its frame rate when too many things are on screen
+       
         Game Play Thus Far:
                 The only thing that can be done is destroy the bunkers using the bullets
 
