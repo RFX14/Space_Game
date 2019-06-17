@@ -17,12 +17,18 @@ public class Bullet {
 
     public void update() {
         yPos -= 2;
-        if(Physics.Collision(this, new Bunker(100, 100))) {
+        BunkerMech bunker = new BunkerMech();
+        if(Physics.Collision(this, new Bunker(100, 50))) {
             hit = true;
             //System.out.println("I'm deaaad!!");
         } else {
             hit = false;
         }
+    
+    }
+
+    public int getY() {
+        return yPos;
     }
 
     public Rectangle getBounds() {

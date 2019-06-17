@@ -1,21 +1,29 @@
 import java.awt.Rectangle;
+import java.util.LinkedList;
 
 public class Physics {
     public Physics() {
-
+        Thread t3 = new Thread(new BunkerMech());
+        t3.start();
     }
-
+    
     public static boolean Collision(Bullet bullet, Bunker bunker) {
-        /*
+        
         for (int i = 0; i < bunker.getBounds().size(); i++) {
-            if (bullet.getBounds().intersects((Rectangle) bunker.getBounds().get(i))) {
+            LinkedList sub = bunker.getBounds();
+            if (bullet.getBounds().intersects((Rectangle)sub.get(i))) {
                 return true;
             }
         }
-        */
+        return false;
+        
+        /*
         if (bullet.getBounds().intersects((Rectangle) bunker.getBounds())) {
             return true;
         }
         return false;
+        */
+        
     }
+    
 }

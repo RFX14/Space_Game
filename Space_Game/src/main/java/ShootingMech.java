@@ -15,6 +15,10 @@ public class ShootingMech {
             temp = ammo.get(i);
             temp.update();
         }
+        
+        if(temp.getY() < 0 || temp.hit) {
+            removeAmmo(temp);
+        }
     }
 
     public void draw(Graphics2D g2d) {
