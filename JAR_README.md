@@ -4,6 +4,8 @@ How to Play:
                 Make sure you have the JRE(Java Runtime Enviornment) or JDK(Java Development Kit) installed before hand or else you won't be able to play.
                 
                 https://www.java.com/en/download/
+                
+               After installing if you have a Windows Machine I recommend you download "Run_Space_Game.bat" as it will make running the jar easier
         
         KNOWN ISSUES:
                 I think the firing issue from before has sorted itself out
