@@ -32,6 +32,14 @@ public class SubBunker {
 
     }
 
+    /**
+     * This is used to decide what shape is being drawn and where
+     * as triangles have specific points to adhere to, while 
+     * rectangles aren't so strict.
+     * FactorX/Y are there because pieces are places 30px away from each other
+     * @param g2d Graphics2D
+     * @param idx the index of the subpiece being drawn which is referenced by a photo
+     */
     public void draw(Graphics2D g2d, int idx) {
         g2d.setColor(Color.GREEN);
 

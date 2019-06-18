@@ -7,8 +7,10 @@ public class Physics {
         t3.start();
     }
     
+    /**This method is called on by Bullet() and is used to determine
+     * whether or not a bullet has collided with a SubBunker
+     */
     public static boolean Collision(Bullet bullet, Bunker bunker) {
-        
         for (int i = 0; i < bunker.getBounds().size(); i++) {
             LinkedList sub = bunker.getBounds();
             if (bullet.getBounds().intersects((Rectangle)sub.get(i))) {

@@ -5,6 +5,12 @@ import java.awt.Rectangle;
 public class Bullet {
     int xPos, yPos;
      boolean hit = false;
+
+     /**
+      * Creates a new bullet based on a given position, normally with a Player
+      * @param xPos is the x-coordinate of the bullet
+      * @param yPos is the y-coordinate of the bullet
+      */
     public Bullet(int xPos, int yPos) {
         this.xPos = xPos;
         this.yPos = yPos;
@@ -18,12 +24,23 @@ public class Bullet {
     public void update() {
         yPos -= 2;
         BunkerMech bunker = new BunkerMech();
-        if(Physics.Collision(this, new Bunker(100, 50))) {
-            hit = true;
-            //System.out.println("I'm deaaad!!");
-        } else {
-            hit = false;
-        }
+        
+        /**
+         * This collision detection sets 'hit = true' if it intersects a Bunker at a SubPiece
+         * The 'hit' variable is used by the ShootingMech class to determine if
+         * a bullet is to be deleted from the screen.
+         */
+
+         for(int i = 0; i < bunker.bunkers.size(); i++) {
+            Bunker sub = bunker.bunkers.get(i);
+            if(Physics.Collision(this, sub)) {
+                hit = true;
+                //System.out.println("I'm deaaad!!");
+            } else {
+                hit = false;
+            }
+         }
+        
     
     }
 

@@ -10,6 +10,7 @@ public class ShootingMech {
         addAmmo(new Bullet(player.getX(), player.getY()));
     }
 
+    //Runs update() on each bullet and does collision detection
     public void update() {
         for(int i = 0; i < ammo.size(); i++) {
             temp = ammo.get(i);
@@ -36,7 +37,7 @@ public class ShootingMech {
         ammo.remove(bullet);
     }
 
-    public static LinkedList getBullet() {
+    public static LinkedList<Bullet> getBullet() {
         return ammo;
     }
 }
