@@ -24,6 +24,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
     int xSize, ySize;
     Player player;
     ShootingMech shoot;
+    EnemyMech enemies;
     BunkerMech bunkers;
     Timer gamelooptimer;
     static JFrame frame = new JFrame();
@@ -37,6 +38,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
         bunkers = new BunkerMech();
         BunkerMech.addBunker(100, 100);
         BunkerMech.addBunker(500, 100);
+        enemies = new EnemyMech(0, 0, 2);
 
         setFocusable(true);
         gamelooptimer = new Timer(5, this);
@@ -55,6 +57,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
             e.printStackTrace();
         }
         
+        enemies.draw(g2d);
         bunkers.draw(g2d);
         player.draw(g2d);
         shoot.draw(g2d);
@@ -72,6 +75,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        enemies.update();
         bunkers.update();
         player.update();
         shoot.update();
