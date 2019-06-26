@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
 public class Enemy {
     int x, y;
@@ -38,5 +39,9 @@ public class Enemy {
 
     public int getY() {
         return y;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, width, height);
     }
 }

@@ -60,7 +60,7 @@ public class Menu extends JPanel implements ActionListener, Runnable {
         frame.setSize(xSize, ySize);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.add(new Menu());
+        frame.add(this);
     }
 
 	public static boolean getClose() {

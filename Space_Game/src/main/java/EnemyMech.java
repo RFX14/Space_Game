@@ -18,10 +18,16 @@ public class EnemyMech {
      * Updates positions of the enemies as well as removes them from memory once off screen
      */
     public void update() {
+        LinkedList<Bullet> bullets = ShootingMech.getBullet();
         for(int i = 0; i < enemies.size(); i++) {
             enemies.get(i).update();
             if(enemies.get(i).getY() > 430 || enemies.get(i).getY() == 0 && enemies.get(i).getX() > 630) {
                 removeEnemy(i);
+            }
+            for(int j = 0; j < bullets.size(); j++) {
+                if(enemies.get(i).getBounds().intersects(bullets.get(j).getBounds())) {
+                    removeEnemy(i);
+                }
             }
         }
     }
