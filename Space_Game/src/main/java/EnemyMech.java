@@ -11,6 +11,7 @@ public class EnemyMech {
      * @param numEnemy is the number of enemies that are to be spawned
      */
     public EnemyMech(int x, int y, int numEnemy) {
+        System.out.println("I'm called");
         addEnemy(x, y, numEnemy);
     }
 
@@ -19,7 +20,7 @@ public class EnemyMech {
      */
     public void update() {
         LinkedList<Bullet> bullets = ShootingMech.getBullet();
-        for(int i = 0; i < enemies.size(); i++) {
+        for(int i = 0; i < enemies.size() - 1; i++) {
             enemies.get(i).update();
             if(enemies.get(i).getY() > 430 || enemies.get(i).getY() == 0 && enemies.get(i).getX() > 630) {
                 removeEnemy(i);
@@ -46,7 +47,11 @@ public class EnemyMech {
      */
     public static void addEnemy(int x, int y, int numEnemy) {
         for(int i = 0; i < numEnemy; i++) {
-            enemies.add(new Enemy(x + (i * 40), y));
+            if(i % 5 == 0) {
+                x = 0;
+                y += 50;
+            }
+            enemies.add(new Enemy(x + (i * 70), y));
         }
     }
 

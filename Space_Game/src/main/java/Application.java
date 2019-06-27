@@ -8,10 +8,9 @@ public class Application {
         while(run) {
             if(Menu.getClose()) {
                 run = false;
-                Thread t2 = new Thread(new Game());
                 Menu.frame.dispose();
-                t2.start();
             }
         }
+        new Game().run();
     }
 }

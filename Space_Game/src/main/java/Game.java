@@ -30,20 +30,22 @@ public class Game extends JPanel implements Runnable, ActionListener {
     static JFrame frame = new JFrame();
 
     public Game() {
-        setLayout(null);
         xSize = 640;
         ySize = 480;
+        setLayout(null);
+        setFocusable(true);
+
         player = new Player();
+        addKeyListener(new KeyInput(player));
+        
+        enemies = new EnemyMech(0, 0, 20);
         shoot = new ShootingMech();
         bunkers = new BunkerMech();
         BunkerMech.addBunker(100, 100);
         BunkerMech.addBunker(500, 100);
-        enemies = new EnemyMech(0, 0, 2);
 
-        setFocusable(true);
         gamelooptimer = new Timer(5, this);
         gamelooptimer.start();
-        addKeyListener(new KeyInput(player));
     }
 
     @Override
@@ -71,7 +73,7 @@ public class Game extends JPanel implements Runnable, ActionListener {
         frame.setSize(xSize, ySize);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.add(new Game());
+        frame.add(this);
     }
 
     public void actionPerformed(ActionEvent e) {
