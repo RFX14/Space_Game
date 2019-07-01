@@ -41,8 +41,9 @@ public class Game extends JPanel implements Runnable, ActionListener {
         enemies = new EnemyMech(0, 0, 20);
         shoot = new ShootingMech();
         bunkers = new BunkerMech();
-        BunkerMech.addBunker(100, 100);
-        BunkerMech.addBunker(500, 100);
+        BunkerMech.addBunker(50, 300);
+        BunkerMech.addBunker(250, 300);
+        BunkerMech.addBunker(450, 300);
 
         gamelooptimer = new Timer(5, this);
         gamelooptimer.start();

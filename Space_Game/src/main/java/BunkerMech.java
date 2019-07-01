@@ -34,6 +34,7 @@ public class BunkerMech implements Runnable {
                 for(int k = 0; k < bunkers.get(i).subShape.size(); k++) {
                     if(((sub.get(k)).intersects((ammo.get(j)).getBounds()))) {
                         removeBunker(i, k);
+                        ShootingMech.removeAmmo(ammo.get(j));
                         //System.out.println("*BUNKER DESTROYED*");
                     }
                 }

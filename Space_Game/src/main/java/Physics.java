@@ -12,8 +12,8 @@ public class Physics {
      */
     public static boolean Collision(Bullet bullet, Bunker bunker) {
         for (int i = 0; i < bunker.getBounds().size(); i++) {
-            LinkedList sub = bunker.getBounds();
-            if (bullet.getBounds().intersects((Rectangle)sub.get(i))) {
+            LinkedList<Rectangle> sub = bunker.getBounds();
+            if (bullet.getBounds().intersects(sub.get(i))) {
                 return true;
             }
         }

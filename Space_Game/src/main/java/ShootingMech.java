@@ -7,19 +7,20 @@ public class ShootingMech {
     Player player = new Player();
 
     public ShootingMech() {
-        addAmmo(new Bullet(player.getX(), player.getY()));
+        addAmmo(new Bullet(-10, -10));
     }
 
     //Runs update() on each bullet and does collision detection
     public void update() {
         for(int i = 0; i < ammo.size(); i++) {
             temp = ammo.get(i);
+            if(temp.getY() < 0) {
+                removeAmmo(temp);
+            }
             temp.update();
         }
         
-        if(temp.getY() < 0 || temp.hit) {
-            removeAmmo(temp);
-        }
+        
     }
 
     public void draw(Graphics2D g2d) {
